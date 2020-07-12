@@ -3,10 +3,6 @@ project(GDCAPI)
 
 set(CMAKE_CXX_STANDARD 20)
 
-#include_directories(
-#        Dependencies/HAPIH/include
-#)
-
 set(SOURCES
 
         include/__gd_ptr.h
