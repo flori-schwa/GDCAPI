@@ -18,21 +18,5 @@ PointerIH* getPtrIsInLvl(gdcapi::GdHandle* handle) {
 }
 
 bool gdcapi::GameInfo::isInLevel() {
-    /*
-     * FIXME
-     *  Addresses calculated by gd.py (Correct):
-     *  - 0x140000
-     *  - 0x4622D0
-     *  - 0x2D2149C
-     *  - 0x22C
-     *  - 0x114
-     *  -
-     *  Addresses calculates by HAPIH:
-     *  - 0x140000
-     *  - 0x4622D0
-     *  - 0x2D2149C
-     *  - 0x22C
-     *  - 0x340 <-- Error (299: ERROR_PARTIAL_COPY) here
-     */
     return this->handle->read<bool>(*getPtrIsInLvl(this->handle));
 }
