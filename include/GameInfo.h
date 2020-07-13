@@ -14,13 +14,13 @@ namespace gdcapi {
     private:
         GdHandle* handle;
 
+
+
     public:
         bool isInLevel();
 
         GameInfo(GdHandle* gd);
     };
-
-//    static const PointerIH PTR_IS_IN_LEVEL(0x3222D0, 0x164, 0x22C, 0x114);
 }
 
 #endif //GDCAPI_GAMEINFO_H

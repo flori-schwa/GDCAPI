@@ -38,8 +38,6 @@ namespace gdcapi {
 
         std::string getPlayerName();
     };
-
-//    static const PointerIH PTR_IS_PLAYER_DEAD(0x3222D0, 0x164, 0x39C);
 }
 
 #endif //GDCAPI_PLAYERINFO_H

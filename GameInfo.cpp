@@ -2,21 +2,14 @@
 // Created by Florian on 12.07.2020.
 //
 
-#include "include/GameInfo.h"
+#include "include/__gd_ptr.h"
 
 gdcapi::GameInfo::GameInfo(GdHandle* gd) : handle(gd) {}
 
-PointerIH* getPtrIsInLvl(gdcapi::GdHandle* handle) {
-    static PointerIH* PTR_IS_IN_LEVEL = nullptr;
+// Pointers stolen from NeKit's gd.py
 
-    if (PTR_IS_IN_LEVEL == nullptr) {
-        PTR_IS_IN_LEVEL = new PointerIH(handle->getHandle()->GetModuleAddress("GeometryDash.exe"), 0x3222D0, 0x164,
-                                        0x22C, 0x114);
-    }
-
-    return PTR_IS_IN_LEVEL;
-}
+DEF_PTR(PTR_IS_IN_LEVEL, 0x3222D0, 0x164, 0x22C, 0x114)
 
 bool gdcapi::GameInfo::isInLevel() {
-    return this->handle->read<bool>(*getPtrIsInLvl(this->handle));
+    return this->handle->read<bool>(Get_PTR_IS_IN_LEVEL(this->handle));
 }

@@ -4,6 +4,7 @@
 #include <sstream>
 
 #include "include/MemoryReadException.h"
+
 char* getErrMsg(const PointerIH& ptr) {
     std::stringstream ptr_ss;
 

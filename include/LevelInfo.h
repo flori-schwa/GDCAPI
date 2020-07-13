@@ -20,10 +20,8 @@ namespace gdcapi {
 
         int getObjectCount();
 
-        LevelInfo(GdHandle* gd);
+        explicit LevelInfo(GdHandle* gd);
     };
-
-//    static const PointerIH PTR_LEVEL_LENGTH(0x3222D0, 0x164, 0x3B4);
 }
 
 #endif //GDCAPI_LEVELINFO_H

@@ -7,14 +7,14 @@
 std::string& readString(gdcapi::GdHandle* handle, std::size_t base, std::size_t offset) {
     // Stolen from NeKit's gd.py
 
-    PointerIH address = { base + offset };
-    PointerIH size_address = { base + offset + GD_STR_SIZE };
+    PointerIH address = {base + offset};
+    PointerIH size_address = {base + offset + GD_STR_SIZE};
     std::size_t str_size = handle->read<int>(size_address);
 
     char* name_buf = new char[str_size];
 
     if (str_size > GD_STR_SIZE) {
-        PointerIH addr2 = { handle->read<std::size_t>(address) };
+        PointerIH addr2 = {handle->read<std::size_t>(address)};
         address = addr2;
     }
 

@@ -7,8 +7,6 @@
 gdcapi::GdHandle::GdHandle() {
     this->handle = new HackIH();
 
-//    this->handle->SetDebugOutput(std::cerr);
-
     this->lvlInfo = new LevelInfo(this);
     this->playerInfo = new PlayerInfo(this);
     this->gameInfo = new GameInfo(this);
@@ -34,7 +32,7 @@ gdcapi::GameInfo* gdcapi::GdHandle::getGameInfo() {
     return this->gameInfo;
 }
 
-HackIH * gdcapi::GdHandle::getHandle() {
+HackIH* gdcapi::GdHandle::getHandle() {
     return this->handle;
 }
 

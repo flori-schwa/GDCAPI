@@ -9,12 +9,14 @@
 
 #define GD_STR_SIZE 16
 
-#define DEF_PTR(Name, ...) PointerIH* Get_##Name(gdcapi::GdHandle* handle) {\
+//#define DEF_PTR(Name, ...) static const PointerIH Name("GeometryDash.exe", __VA_ARGS__);
+
+#define DEF_PTR(Name, ...) PointerIH& Get_##Name(gdcapi::GdHandle* handle) {\
         static PointerIH* Name = nullptr; \
         if (Name == nullptr) {\
             Name = new PointerIH(handle->getHandle()->GetModuleAddress("GeometryDash.exe"), __VA_ARGS__);\
         }\
-        return Name;\
+        return *Name;\
         }
 
 
