@@ -17,6 +17,10 @@ namespace gdcapi {
     public:
         bool isInLevel();
 
+        bool isInMenu();
+
+        bool isOnEndOfAttemptScreen();
+
         GameInfo(GdHandle* gd);
     };
 }

@@ -21,7 +21,7 @@ DEF_PTR(PTR_PLAYER_Y, 0x3222D0, 0x164, 0x224, 0x680)
 
 DEF_PTR(PTR_CURRENT_ATTEMPT, 0x3222D0, 0x164, 0x4A8)
 
-DEF_PTR(PTR_IS_PRACTICE_MODE, 0x3222D0, 0x164, 0x22C, 0x114, 0xF8)
+DEF_PTR(PTR_IS_PRACTICE_MODE, 0x3222D0, 0x164, 0x495)
 
 bool gdcapi::PlayerInfo::isPlayerDead() {
     return this->handle->read<bool>(Get_PTR_IS_PLAYER_DEAD(this->handle));
@@ -59,5 +59,5 @@ int gdcapi::PlayerInfo::getCurrentAttempt() {
 }
 
 bool gdcapi::PlayerInfo::isInPracticeMode() {
-    return handle->read<int>(Get_PTR_IS_PRACTICE_MODE(handle));
+    return handle->read<bool>(Get_PTR_IS_PRACTICE_MODE(handle));
 }
