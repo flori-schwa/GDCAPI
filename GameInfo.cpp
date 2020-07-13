@@ -11,5 +11,5 @@ gdcapi::GameInfo::GameInfo(GdHandle* gd) : handle(gd) {}
 DEF_PTR(PTR_IS_IN_LEVEL, 0x3222D0, 0x164, 0x22C, 0x114)
 
 bool gdcapi::GameInfo::isInLevel() {
-    return this->handle->read<bool>(Get_PTR_IS_IN_LEVEL(this->handle));
+    return handle->read<bool>(Get_PTR_IS_IN_LEVEL(handle));
 }

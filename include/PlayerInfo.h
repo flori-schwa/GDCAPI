@@ -36,7 +36,11 @@ namespace gdcapi {
 
         float getY();
 
-        std::string getPlayerName();
+        int getCurrentAttempt();
+
+        bool isInPracticeMode();
+
+        std::string& getPlayerName();
     };
 }
 

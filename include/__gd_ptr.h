@@ -14,7 +14,7 @@
 #define DEF_PTR(Name, ...) PointerIH& Get_##Name(gdcapi::GdHandle* handle) {\
         static PointerIH* Name = nullptr; \
         if (Name == nullptr) {\
-            Name = new PointerIH(handle->getHandle()->GetModuleAddress("GeometryDash.exe"), __VA_ARGS__);\
+            Name = new PointerIH(handle->getHandle().GetModuleAddress("GeometryDash.exe"), __VA_ARGS__);\
         }\
         return *Name;\
         }

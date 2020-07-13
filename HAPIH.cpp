@@ -437,3 +437,22 @@ bool HackIH::DllEject(const std::string& FileName) {
     WriteLog("DLL Unloaded");
     return true;
 }
+
+bool HackIH::IsProcessRunning() {
+    if (!IsBound()) {
+        return false;
+    }
+
+    DWORD exitCode = 0;
+    HANDLE handle = ((HANDLE) ProcHandle);
+
+    if (!handle) {
+        return false;
+    }
+
+    if (!GetExitCodeProcess(handle, &exitCode)) {
+        return false;
+    }
+
+    return exitCode == STILL_ACTIVE;
+}

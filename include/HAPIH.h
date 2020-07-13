@@ -103,6 +103,8 @@ public:
     bool bind(std::string ProcessName);
     const bool IsBound() const { return isBound; }
 
+    bool IsProcessRunning();
+
     void* GetModuleAddress(const std::string & ModuleName) const;
 
     void* GetPointerAddress(const PointerIH & Pointer) const;

@@ -12,6 +12,15 @@ gdcapi::GdHandle::GdHandle() {
     this->gameInfo = new GameInfo(this);
 }
 
+gdcapi::GdHandle::~GdHandle() {
+    delete this->handle;
+
+    delete this->lvlInfo;
+    delete this->playerInfo;
+    delete this->gameInfo;
+}
+
+
 bool gdcapi::GdHandle::bind() {
     return handle->bind("GeometryDash.exe");
 }
@@ -20,20 +29,24 @@ bool gdcapi::GdHandle::isBound() {
     return handle->IsBound();
 }
 
-gdcapi::LevelInfo* gdcapi::GdHandle::getLevelInfo() {
-    return this->lvlInfo;
+bool gdcapi::GdHandle::isGameRunning() {
+    return handle->IsProcessRunning();
 }
 
-gdcapi::PlayerInfo* gdcapi::GdHandle::getPlayerInfo() {
-    return this->playerInfo;
+gdcapi::LevelInfo& gdcapi::GdHandle::getLevelInfo() {
+    return *this->lvlInfo;
 }
 
-gdcapi::GameInfo* gdcapi::GdHandle::getGameInfo() {
-    return this->gameInfo;
+gdcapi::PlayerInfo& gdcapi::GdHandle::getPlayerInfo() {
+    return *this->playerInfo;
 }
 
-HackIH* gdcapi::GdHandle::getHandle() {
-    return this->handle;
+gdcapi::GameInfo& gdcapi::GdHandle::getGameInfo() {
+    return *this->gameInfo;
+}
+
+HackIH& gdcapi::GdHandle::getHandle() {
+    return *this->handle;
 }
 
 bool gdcapi::GdHandle::read(PointerIH& ptr, void* buffer, std::size_t size) const {

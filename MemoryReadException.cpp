@@ -5,7 +5,7 @@
 
 #include "include/MemoryReadException.h"
 
-char* getErrMsg(const PointerIH& ptr) {
+std::unique_ptr<char*> getErrMsg(const PointerIH& ptr) {
     std::stringstream ptr_ss;
 
     for (int i = 0; i < ptr.GetOffsets().size(); i++) {
@@ -21,7 +21,7 @@ char* getErrMsg(const PointerIH& ptr) {
     std::stringstream ss;
     ss << "Failed to read memory at addr " << ptr_ss.str() << ": " << GetLastError() << std::endl;
 
-    auto* msg_cpp_str_ptr = new std::string(ss.str());
+    std::string* msg_cpp_str_ptr = new std::string(ss.str());
     const char* msg_c_str = msg_cpp_str_ptr->c_str();
 
     std::size_t size = sizeof(char) * (strlen(msg_c_str) + 1);
@@ -32,7 +32,7 @@ char* getErrMsg(const PointerIH& ptr) {
 
     delete msg_cpp_str_ptr;
 
-    return msg_c_str_cpy;
+    return std::make_unique<char*>(msg_c_str_cpy);
 }
 
-gdcapi::MemoryReadException::MemoryReadException(const PointerIH& ptr) : std::exception(getErrMsg(ptr)) {}
+gdcapi::MemoryReadException::MemoryReadException(const PointerIH& ptr) : std::exception(*getErrMsg(ptr)) {}

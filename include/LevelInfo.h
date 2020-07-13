@@ -20,6 +20,16 @@ namespace gdcapi {
 
         int getObjectCount();
 
+        int getTotalAttempts();
+
+        int getLevelId();
+
+        std::string& getLevelName();
+
+        int getTotalJumps();
+
+        int getBestNormalPercent();
+
         explicit LevelInfo(GdHandle* gd);
     };
 }

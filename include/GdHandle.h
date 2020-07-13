@@ -32,17 +32,21 @@ namespace gdcapi {
 
         explicit GdHandle();
 
+        ~GdHandle();
+
         bool bind();
 
         bool isBound();
 
-        LevelInfo* getLevelInfo();
+        bool isGameRunning();
 
-        PlayerInfo* getPlayerInfo();
+        LevelInfo& getLevelInfo();
 
-        GameInfo* getGameInfo();
+        PlayerInfo& getPlayerInfo();
 
-        HackIH* getHandle();
+        GameInfo& getGameInfo();
+
+        HackIH& getHandle();
 
         bool read(PointerIH& ptr, void* buffer, std::size_t size) const;
 

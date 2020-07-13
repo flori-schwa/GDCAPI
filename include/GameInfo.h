@@ -14,8 +14,6 @@ namespace gdcapi {
     private:
         GdHandle* handle;
 
-
-
     public:
         bool isInLevel();
 

@@ -19,6 +19,10 @@ DEF_PTR(PTR_PLAYER_X, 0x3222D0, 0x164, 0x224, 0x67C)
 
 DEF_PTR(PTR_PLAYER_Y, 0x3222D0, 0x164, 0x224, 0x680)
 
+DEF_PTR(PTR_CURRENT_ATTEMPT, 0x3222D0, 0x164, 0x4A8)
+
+DEF_PTR(PTR_IS_PRACTICE_MODE, 0x3222D0, 0x164, 0x22C, 0x114, 0xF8)
+
 bool gdcapi::PlayerInfo::isPlayerDead() {
     return this->handle->read<bool>(Get_PTR_IS_PLAYER_DEAD(this->handle));
 }
@@ -36,16 +40,24 @@ gdcapi::Gamemode gdcapi::PlayerInfo::getGameMode() {
     return Cube;
 }
 
-std::string gdcapi::PlayerInfo::getPlayerName() {
-    std::size_t playerNamePtr = this->handle->read<std::size_t>(Get_PTR_PLAYER_NAME_PTR(this->handle));
+std::string& gdcapi::PlayerInfo::getPlayerName() {
+    std::size_t playerNamePtr = handle->read<std::size_t>(Get_PTR_PLAYER_NAME_PTR(handle));
 
-    return readString(this->handle, playerNamePtr, 0x108);
+    return readString(handle, playerNamePtr, 0x108);
 }
 
 float gdcapi::PlayerInfo::getX() {
-    return this->handle->read<float>(Get_PTR_PLAYER_X(this->handle));
+    return handle->read<float>(Get_PTR_PLAYER_X(handle));
 }
 
 float gdcapi::PlayerInfo::getY() {
-    return this->handle->read<float>(Get_PTR_PLAYER_Y(this->handle));
+    return handle->read<float>(Get_PTR_PLAYER_Y(handle));
+}
+
+int gdcapi::PlayerInfo::getCurrentAttempt() {
+    return handle->read<int>(Get_PTR_CURRENT_ATTEMPT(handle));
+}
+
+bool gdcapi::PlayerInfo::isInPracticeMode() {
+    return handle->read<int>(Get_PTR_IS_PRACTICE_MODE(handle));
 }
